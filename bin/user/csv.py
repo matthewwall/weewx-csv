@@ -1,28 +1,39 @@
-# $Id: csv.py 1766 2017-10-17 13:53:41Z mwall $
-# Copyright 2015 Matthew Wall
+# Copyright 2015-2021 Matthew Wall
+# Distributed under the terms of the GNU Public License (GPLv3)
 
 import os
 import os.path
 import time
-import syslog
 
 import weewx
 import weewx.engine
 import weeutil.weeutil
 
-VERSION = "0.10"
+VERSION = "0.11"
 
-def logmsg(level, msg):
-    syslog.syslog(level, 'csv: %s' % msg)
+try:
+    import weeutil.logger
+    import logging
+    log = logging.getLogger(__name__)
 
-def logdbg(msg):
-    logmsg(syslog.LOG_DEBUG, msg)
+    def logdbg(msg):
+        log.debug(msg)
+    def loginf(msg):
+        log.info(msg)
+    def logerr(msg):
+        log.error(msg)
 
-def loginf(msg):
-    logmsg(syslog.LOG_INFO, msg)
+except ImportError:
+    import syslog
 
-def logerr(msg):
-    logmsg(syslog.LOG_ERR, msg)
+    def logmsg(level, msg):
+        syslog.syslog(level, 'csv: %s' % msg)
+    def logdbg(msg):
+        logmsg(syslog.LOG_DEBUG, msg)
+    def loginf(msg):
+        logmsg(syslog.LOG_INFO, msg)
+    def logerr(msg):
+        logmsg(syslog.LOG_ERR, msg)
 
 class CSV(weewx.engine.StdService):
     def __init__(self, engine, config_dict):

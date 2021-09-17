@@ -1,0 +1,17 @@
+csv - emit loop or archive data in comma-separated-value format
+Copyright 2015-2021 Matthew Wall
+Distributed under terms of the GPLv3
+
+===============================================================================
+Installation
+
+1) download
+
+2) run the installer:
+
+wee_extension --install weewx-csv.tgz
+
+3) restart weewx:
+
+sudo /etc/init.d/weewx stop
+sudo /etc/init.d/weewx start

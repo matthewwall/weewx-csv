@@ -1,3 +1,7 @@
+0.11 21sep2021
+* update for python3 and weewx4
+* release to github
+
 0.10 17oct2017
 * fixed dtstr typo
 
