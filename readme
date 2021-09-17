@@ -2,16 +2,70 @@ csv - emit loop or archive data in comma-separated-value format
 Copyright 2015-2021 Matthew Wall
 Distributed under terms of the GPLv3
 
+This service will emit either loop or archive data from weewx in CSV format.
+Typically this would be done using a template and the Cheetah reporting engine
+in weewx.  But this service provides the option of emitting loop data, not just
+archive data.
+
 ===============================================================================
 Installation
 
 1) download
 
+  wget -O weewx-csv.zip https://github.com/matthewwall/weewx-csv/archive/master.zip
+
 2) run the installer:
 
-wee_extension --install weewx-csv.tgz
+wee_extension --install weewx-csv.zip
 
 3) restart weewx:
 
 sudo /etc/init.d/weewx stop
 sudo /etc/init.d/weewx start
+
+
+===============================================================================
+Configuration
+
+The service recognizes a few options, including:
+
+binding
+
+  Indicates which data to emit, either 'loop' or 'archive'.  Default is 'loop'.
+
+header
+
+  Determines whether a commented header will be included as the first line of
+  the file.  Default is True.
+
+mode
+
+  Determines whether the file will be overwritten or appended.
+  Default is 'append'.  Any other value will overwrite.
+
+filename
+
+  Use the filename option to indicate where the CSV data should be saved.
+  The default location for CSV output is /var/tmp/data.csv
+
+append_datestamp
+
+  When set to True, the filename will be extended with a date stamp.
+  Default is True.
+
+datestamp_format
+
+  Format for the datestamp extension.  Default is '%Y-%m'
+
+timestamp_format
+
+  Format for timestamps in the CSV data.  Default is None.
+
+
+===============================================================================
+Examples
+
+[CSV]
+    filename = /tmp/weewx-data.csv
+    header = False
+
