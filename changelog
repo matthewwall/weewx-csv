@@ -1,0 +1,33 @@
+0.10 17oct2017
+* fixed dtstr typo
+
+0.9 09oct2017
+* added option to format the timestamp
+* added option to specify the datestap format
+
+0.8 09oct2017
+* fix missing syslog import
+
+0.7 05oct2017
+* fixed bug in header logic
+* added append_datestamp option to datestamp the file
+
+0.6 16jun2015
+* added version and logging
+
+0.5 10may2015
+* ok to return values during catchup
+
+0.4 02may2015
+* fix header logic
+
+0.3 02may2015
+* use 'mode' instead of append
+* ensure header option is boolean
+
+0.2 02may2015
+* added the append option
+* fix some typos
+
+0.1 02may2015
+* initial public release
