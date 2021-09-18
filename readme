@@ -29,37 +29,19 @@ Configuration
 
 The service recognizes a few options, including:
 
-binding
+binding - The binding determines whether the file will be updated with every LOOP packet or archive record. Possible values are loop or archive. Default is loop
 
-  Indicates which data to emit, either 'loop' or 'archive'.  Default is 'loop'.
+filename - The full path of the file. Default is /var/tmp/data.csv
 
-header
+mode - Indicates whether to append or overwrite each time data is written to file. Default is append.
 
-  Determines whether a commented header will be included as the first line of
-  the file.  Default is True.
+append_datestamp - Indicates whether the file should include a timestamp of the form YYYY-mm, so that /var/tmp/data.csv becomes /var/tmp/data-2017-01.csv, /var/tmp/data-2017-02.csv, etc. Default is True.
 
-mode
+datestamp_format - The format for the appended datestamp. For example, %Y-%m-%d would result in filenames such as data-2017-10-01.csv, with a new file each day. Default is %Y-%m, which results in a new file each month.
 
-  Determines whether the file will be overwritten or appended.
-  Default is 'append'.  Any other value will overwrite.
+header - Indicates whether to include a header with the name of each field at the beginning of the file. Default is True.
 
-filename
-
-  Use the filename option to indicate where the CSV data should be saved.
-  The default location for CSV output is /var/tmp/data.csv
-
-append_datestamp
-
-  When set to True, the filename will be extended with a date stamp.
-  Default is True.
-
-datestamp_format
-
-  Format for the datestamp extension.  Default is '%Y-%m'
-
-timestamp_format
-
-  Format for timestamps in the CSV data.  Default is None.
+timestamp_format - The format for the data timestamp. For example, %Y-%m-%d %H:%M:%S results in a dateTime field like 2017-10-01 14:23:03. All times are UTC. Default is no format, which results in a unix epoch.
 
 
 ===============================================================================
